@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
+    <title>Pokemon Details</title>
 
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -25,28 +25,37 @@
 <body>
     <section class="content">
 
-        
-        <h1>Pokedex</h1>
+        <!-- Adicione este botão em algum lugar de seu HTML, por exemplo, dentro da div com a classe "pokemon-details" -->
+        <button id="backButton">Voltar</button>
 
-        <div class="search">
-            <input id="searchInput" type="text" placeholder="Digite o nome Pokemon">
-        </div>
 
-        <ol id="pokemonList" class="pokemons">
-            <!-- ..... Pokemons here ..... -->
-        </ol>
+        <h1>Pokemon Details</h1>
 
-        <div class="pagination">
-            <button id="loadMoreButton" type="button">
-                Carregar Mais
-            </button>
+        <div class="pokemon-details">
+            <div class="detail-image">
+                <img id="pokemonImage" src="" alt="Pokemon Image">
+            </div>
+
+            <div class="detail-info">
+                <h2 id="pokemonName">Pokemon Name</h2>
+                <p id="pokemonNumber">Pokemon Number</p>
+                <p id="pokemonExperience">Experience: 0</p>
+                <h3>Types</h3>
+                <ul id="pokemonTypes">
+                    <!-- Pokemon types will be displayed here -->
+                </ul>
+                <h3>Habilidades</h3>
+                <ul id="pokemonAbilities">
+                    <!-- Pokemon types will be displayed here -->
+                </ul>
+            </div>
         </div>
     </section>
 
     <!-- Nosso JS -->
     <script src="/assets/js/pokemon-model.js"></script>
     <script src="/assets/js/poke-api.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/details.js"></script>
 </body>
 
 </html>

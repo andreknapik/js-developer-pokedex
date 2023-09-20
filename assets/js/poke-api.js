@@ -5,12 +5,19 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
     const pokemon = new Pokemon()
     pokemon.number = pokeDetail.id
     pokemon.name = pokeDetail.name
+    pokemon.base_experience = pokeDetail.base_experience
 
     const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name)
     const [type] = types
 
     pokemon.types = types
     pokemon.type = type
+
+    const abilities = pokeDetail.abilities.map((abilitieSlot) => abilitieSlot.ability.name)
+    const [abilitie] = abilities
+
+    pokemon.abilities = abilities
+    pokemon.abilitie = abilitie
 
     pokemon.photo = pokeDetail.sprites.other.dream_world.front_default
 
@@ -33,3 +40,17 @@ pokeApi.getPokemons = (offset = 0, limit = 5) => {
         .then((detailRequests) => Promise.all(detailRequests))
         .then((pokemonsDetails) => pokemonsDetails)
 }
+
+pokeApi.getPokemonByName = (name) => {
+    const url = `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`;
+    
+    return fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Não foi possível encontrar o Pokémon com o nome ${name}`);
+            }
+            return response.json();
+        })
+        .then(convertPokeApiDetailToPokemon);
+}
+
